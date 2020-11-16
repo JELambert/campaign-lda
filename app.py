@@ -26,7 +26,9 @@ from datetime import date
 @st.cache
 def load_data():
     bdf = pd.read_csv('data/biden.csv')
+    bdf['newdate'] = pd.to_datetime(bdf['date']).dt.date
     tdf = pd.read_csv('data/trump.csv')
+    tdf['newdate'] = pd.to_datetime(tdf['date']).dt.date
     return bdf, tdf
 
 bdf, tdf = load_data()
@@ -93,6 +95,8 @@ elif page== "LDA":
         e = st.date_input( "When should we end the LDA", date(2020, 11, 3))
 
 
+    mask = (df['newdate'] > s) & (df['newdate'] <= e)
+    df = df.loc[mask]
 
 
     def preprocess(text):
