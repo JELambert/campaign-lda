@@ -39,10 +39,50 @@ bdf, tdf = load_data()
 st.sidebar.title("Campaign Speeches")
 page = st.sidebar.radio(
      "Pick an option",
-     ('Speech', 'LDA'),
+     ('Home' , 'Speech', 'LDA'),
      )
 
-if page == "Speech":
+if page == "Home":
+    st.header("Overview")
+
+    st.markdown("This page will serve as an overview of all of the analysis that the other pages consist of.")
+    st.markdown("-------")
+    st.subheader("First a brief overview of the intent:")
+    st.markdown("We collect all speech material from both Trump and Biden during the election cycle. For data see the **'Speech'** page.")
+    st.markdown("-------")
+    st.subheader("Next we implement a natural language processing technique of unsupervised machine learning")
+    st.markdown("This is known as Latent Dirichlet Allocation --- Blei, D. M., Ng, A. Y., & Jordan, M. I. (2003). Latent dirichlet allocation. Journal of machine Learning research, 3(Jan), 993-1022.")
+    st.markdown("This method allows us to identify the underlying topics emergent in the speeches. Find an interactive implementation on the **'LDA'** page.")
+    st.markdown("-------")
+    st.subheader("Finally we run temporal models using Dynamic Topic modeling")
+    st.markdown("This is to better uncover trends in topics over time ---Blei, D. M., & Lafferty, J. D. (2006, June). Dynamic topic models. In Proceedings of the 23rd international conference on Machine learning (pp. 113-120).")
+    st.markdown("-------")
+    st.header("For more information select a particular topic:")
+    extra = st.selectbox("Topic", ("How do you clean speeches?", "What can we change in the LDA?", "How does the dynamic LDA work?"))
+
+    if extra =="How do you clean speeches?":
+        st.subheader("Cleaning speeches is a key part in the process.")
+        st.markdown("Without cleaning up the data, words and symbols that are not informative might emerge like _'.'_ or _'and'_. Primary steps in no particular order include:")
+        st.markdown("* Remove stop words")
+        st.markdown("* Tag parts of speech and remove non-nouns")
+        st.markdown("* Lemmatize words")
+        st.markdown("* Remove symbols and punctuation")
+
+    elif extra == "What can we change in the LDA?":
+        st.subheader("A few options are given to be changed in the overall LDA")
+        st.markdown("* Number of topics")
+        st.markdown("This parameter allows the user to adjust the number of topics the unsupervised machine learning fits the data to. More topics can mean more specific words, but at some point the model may underperform.")
+        st.markdown("* Bigram Threshold")
+        st.markdown("This parameter changes the number of times two words need to appear together for them to form a bigram, for instance _'United States'_ . Lower numbers indicate fewer times.  ")
+        st.markdown("* Date")
+        st.markdown("The two inputs correspond to the given date range you wish to constrain a topic model to.")
+        st.markdown("* Coherence Score")
+        st.markdown("This is a measure of how well the LDA model fits the underlying data. Lower scores here are better. It is the Intrinsic UMass Measure.")
+
+    elif extra == "How does the dynamic LDA work?":
+        st.subheader("Dynamic Topic Model Splits the Data")
+
+elif page == "Speech":
 
     elect = st.radio(
          "Pick an Candidate",
