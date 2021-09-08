@@ -4,4 +4,8 @@ numpy==1.18.1
 sklearn
 shap
 matplotlib
+seaborn
+nltk
+wordcloud
 gensim
+pyLDAvis
