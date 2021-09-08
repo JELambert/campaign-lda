@@ -4,3 +4,4 @@ numpy==1.18.1
 sklearn
 shap
 matplotlib
+gensim
