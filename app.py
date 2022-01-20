@@ -173,7 +173,7 @@ elif page== "LDA":
                                                num_topics=numtop,
                                                random_state=100,
                                                update_every=1,
-                                               passes=10,
+                                               passes=3,
                                                alpha='auto',
                                                per_word_topics=True)
 
